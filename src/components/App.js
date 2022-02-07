@@ -22,6 +22,18 @@ function App() {
     setToys([...toys, newlyAddedToy])
   }
 
+  function updateLikes(updatedToy){
+    const updatedToyLikes = toys.map((toy) => {
+      if(toy.id === updatedToy.id) {
+        return updatedToy;
+      } else {
+        return toy
+      }
+    });
+    //then we set all the items in state with the new array
+    // setToys(updatedToyLikes)
+  }
+  
   function handleDeleteToy(deletedToy){
       //creates a new empty array (updatedItems) then filters
       //by item whose id isn't the deleted item and then 
@@ -37,7 +49,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} onDeleteToy={handleDeleteToy}/>
+      <ToyContainer onLikeUpdate={updateLikes} toys={toys} onDeleteToy={handleDeleteToy} />
     </>
   );
 }
