@@ -9,7 +9,6 @@ function ToyForm( { onUpdateToyList } ) {
 
 
   function handleFormInput(event) {
-    console.log(event.target.value)
     const name = event.target.name
     let value = event.target.value
     setFormData({...formData, [name]: value})

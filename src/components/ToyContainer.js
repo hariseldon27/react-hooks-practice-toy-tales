@@ -1,15 +1,14 @@
 import React from "react";
 import ToyCard from "./ToyCard";
 
-function ToyContainer( { toys } ) {
+function ToyContainer( { toys, onDeleteToy } ) {
   return (
     <div id="toy-collection">
       {toys.map((individualToy) => (
         <ToyCard 
         key={individualToy.id} 
-        name={individualToy.name} 
-        image={individualToy.image} 
-        likes={individualToy.likes}/>
+        toy={individualToy}
+        onDeleteToyClick={onDeleteToy}/>
       ))}
       </div>
   );
