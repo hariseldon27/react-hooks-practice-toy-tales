@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ToyCard( { toy, onDeleteToyClick, onLikeUpdate } ) {
   const {id, name, image, likes} = toy
+
   function handleDelete(){
     console.log(toy)
-    fetch(`http://localhost:3001/toys/${id}`, {
+    fetch(`http://localhost:3001/toys/${toy.id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())
@@ -13,9 +14,9 @@ function ToyCard( { toy, onDeleteToyClick, onLikeUpdate } ) {
 
   function handleLikeClick() {
     // console.log(likes.likes)
-    let newLikes = (likes.likes + 1)
+    let newLikes = (toy.likes + 1)
     // console.log(newLikes)
-      fetch(`http://localhost:3001/toys/${id}`, {
+      fetch(`http://localhost:3001/toys/${toy.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -32,11 +33,11 @@ function ToyCard( { toy, onDeleteToyClick, onLikeUpdate } ) {
     <div className="card">
       <h2>{name}</h2>
       <img
-        src={image}
-        alt={name}
+        src={toy.image}
+        alt={toy.name}
         className="toy-avatar"
       />
-      <p>likes Likes </p>
+      <p>{toy.likes} Likes </p>
       <button className="like-btn" onClick={handleLikeClick}>Like {"<3"}</button>
       <button className="del-btn" onClick={handleDelete}>Donate to GoodWill</button>
     </div>

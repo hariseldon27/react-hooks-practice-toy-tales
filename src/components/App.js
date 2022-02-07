@@ -31,9 +31,9 @@ function App() {
       }
     });
     //then we set all the items in state with the new array
-    // setToys(updatedToyLikes)
+    setToys(updatedToyLikes)
   }
-  
+
   function handleDeleteToy(deletedToy){
       //creates a new empty array (updatedItems) then filters
       //by item whose id isn't the deleted item and then 
